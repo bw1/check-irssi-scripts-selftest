@@ -22,7 +22,7 @@ jobs:
       run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
     - name: check scripts
       run: perl runselfcheck.pl
-    - name: out info
-      run: cat tmp/info.yaml
-    - name: out log
-      run: cat tmp/selfcheck.log
+        #    - name: out info
+        #      run: cat tmp/info.yaml
+        #    - name: out log
+        #      run: cat tmp/selfcheck.log

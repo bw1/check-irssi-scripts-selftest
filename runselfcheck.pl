@@ -49,3 +49,5 @@ if ( $debug > 0 ) {
 }
 chdir $wd;
 
+system "cat", "$wp/info.yaml";
+system "cat", "$wp/selfcheck.log";
