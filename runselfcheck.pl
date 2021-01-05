@@ -11,6 +11,7 @@ use Cwd;
 my $wd= getcwd(); 
 my $wp= "tmp";
 my $configp= "irssi_config";
+my $debug=0;
 
 my $startup= <<'END';
 ^set settings_autosave off
@@ -34,11 +35,16 @@ mkdir "$wp/$configp/";
 write_text("$wp/$configp/startup", $startup);
 my $t;
 $t="$wp/$configp/scripts";
-`ln -s /home/robert/versuche/script-irssi/scripts/ $t`; #!!
+`ln -s $wd/scripts.irssi.org/scripts/ $t`; #!!
 $t="$wp/testhelperscript.pl";
 `ln -s $wd/testhelperscript.pl $t`; #!!
 
 chdir $wp;
 $ENV{CURRENT_SCRIPT}='chansearch';
-#`irssi --home=$configp`;
-system("irssi", "--home=$configp");
+if ( $debug > 0 ) {
+	system("irssi", "--home=$configp");
+} else {
+	`irssi --home=$configp`;
+}
+chdir $wd;
+

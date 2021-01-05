@@ -12,18 +12,17 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
-    - name: libyaml
-      run: sudo apt-get install -q libyaml-perl
-    - name: irssi
-      run: sudo apt-get install -q irssi
+    - name: installpkg
+      run: rungetpkg.sh
     - name: scripts
       run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
-    - name: tree install
-      run: 'sudo apt-get install tree'
     - name: tree
       run: 'tree $PWD'
     - name: pwd
       run: 'echo pwd: $PWD'
     - name: check scripts
-      #run: perl ~/work/check-irssi-scripts-selftest/check-irssi-scripts-selftest/runselfcheck.pl
       run: perl runselfcheck.pl
+    - name: out info
+      run: cat tmp/info.yaml
+    - name: out log
+      run: cat tmp/selfcheck.log
