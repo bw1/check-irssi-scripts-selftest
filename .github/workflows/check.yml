@@ -21,8 +21,9 @@ jobs:
     - name: tree install
       run: 'sudo apt-get install tree'
     - name: tree
-      run: 'tree ~'
+      run: 'tree $PWD'
     - name: pwd
       run: 'echo pwd: $PWD'
     - name: check scripts
-      run: perl ~/work/check-irssi-scripts-selftest/check-irssi-scripts-selftest/runselfcheck.pl
+      #run: perl ~/work/check-irssi-scripts-selftest/check-irssi-scripts-selftest/runselfcheck.pl
+      run: perl runselfcheck.pl
