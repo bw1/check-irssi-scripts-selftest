@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#  it's new
+#  run self check
 #
 use strict;
 use YAML qw/DumpFile LoadFile/;
@@ -11,7 +11,7 @@ use Cwd;
 my $wd= getcwd(); 
 my $wp= "tmp";
 my $configp= "irssi_config";
-my $debug=1;
+my $debug=0;
 
 my $startup= <<'END';
 ^set settings_autosave off

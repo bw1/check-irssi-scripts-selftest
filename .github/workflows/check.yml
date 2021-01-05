@@ -18,12 +18,14 @@ jobs:
       run: './rungetpkg.sh'
     - name: tree
       run: 'tree $PWD'
+    - name: sleep
+      run: 'sleep 15'
     - name: scripts
       run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
     - name: check scripts
       run: perl runselfcheck.pl
-    - name: tree
-      run: 'tree $PWD'
+        #    - name: tree
+        #      run: 'tree $PWD'
         #    - name: out info
         #      run: cat tmp/info.yaml
         #    - name: out log
