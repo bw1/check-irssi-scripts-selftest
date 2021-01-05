@@ -1,0 +1,26 @@
+name: check
+
+on: 
+  push:
+  schedule:
+     - cron: '0 12 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: libyaml
+      run: sudo apt-get install -q libyaml-perl
+    - name: irssi
+      run: sudo apt-get install -q irssi
+    - name: scripts
+      run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
+    - name: tree
+      run: tree ~
+    - name: pwd
+      run: echo pwd: $PWD
+    - name: check scripts
+      run: perl ~/work/check-irssi-scripts-selftest/check-irssi-scripts-selftest/runselfcheck.pl
