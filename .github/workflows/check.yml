@@ -19,8 +19,8 @@ jobs:
     - name: scripts
       run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
     - name: tree
-      run: tree ~
+      run: 'tree ~'
     - name: pwd
-      run: echo pwd: $PWD
+      run: 'echo pwd: $PWD'
     - name: check scripts
       run: perl ~/work/check-irssi-scripts-selftest/check-irssi-scripts-selftest/runselfcheck.pl
