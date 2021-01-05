@@ -26,14 +26,18 @@ sub myquit {
 	Irssi::command('quit');
 }
 
+Irssi::print("Selfcheck: startlog", MSGLEVEL_CRAP);
 Irssi::command('^window log on selfcheck.log');
+Irssi::print("Selfcheck: loadscript ($CURRENT_SCRIPT)", MSGLEVEL_CRAP);
 Irssi::command("script load $CURRENT_SCRIPT");
 
+Irssi::print("Selfcheck: get info", MSGLEVEL_CRAP);
 %info = do { no strict 'refs'; %{"Irssi::Script::${CURRENT_SCRIPT}::IRSSI"} };
 $version = do { no strict 'refs'; ${"Irssi::Script::${CURRENT_SCRIPT}::VERSION"} };
 @commands = sort map { $_->{cmd} } grep { $_->{category} eq "Perl scripts' commands" } Irssi::commands;
 $info{version}=$version;
 $info{commands}= join " ", @commands;
+Irssi::print("Selfcheck: script version: $version", MSGLEVEL_CRAP);
 
 myquit('-') unless (exists $info{selfcheckcmd} );
 
