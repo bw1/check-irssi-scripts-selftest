@@ -41,7 +41,7 @@ $t="$wp/testhelperscript.pl";
 
 chdir $wp;
 $ENV{CURRENT_SCRIPT}='chansearch';
-$ENV{TERM}='xterm';
+$ENV{TERM}='vt100';
 if ( $debug > 0 ) {
 	system("irssi", "--home=$configp");
 } else {
