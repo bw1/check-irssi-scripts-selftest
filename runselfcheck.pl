@@ -3,7 +3,7 @@
 #  it's new
 #
 use strict;
-use YAML::XS qw/DumpFile LoadFile/;
+use YAML qw/DumpFile LoadFile/;
 use File::Slurper qw/read_text write_text/;
 use File::Path qw/make_path rmtree/;
 use Cwd;
