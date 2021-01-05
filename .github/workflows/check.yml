@@ -12,14 +12,14 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
-    - name: installpkg
-      run: ./rungetpkg.sh
-    - name: scripts
-      run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
     - name: tree
       run: 'tree $PWD'
     - name: pwd
       run: 'echo pwd: $PWD'
+    - name: installpkg
+      run: bash rungetpkg.sh
+    - name: scripts
+      run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
     - name: check scripts
       run: perl runselfcheck.pl
     - name: out info
