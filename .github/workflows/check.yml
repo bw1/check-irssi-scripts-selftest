@@ -1,0 +1,32 @@
+name: check
+
+on: 
+  #push:
+  #schedule:
+  #   - cron: '0 12 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: pwd
+      run: 'echo pwd: $PWD'
+    - name: installpkg
+      run: './rungetpkg.sh'
+    - name: tree
+      run: 'tree $PWD'
+    - run: 'whoami ; echo user: $USER'
+    - name: scripts
+      run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
+    - name: check scripts
+      run: perl runselfcheck.pl
+      shell: 'bash {0}'
+        #    - name: tree
+        #      run: 'tree $PWD'
+        #    - name: out info
+        #      run: cat tmp/info.yaml
+        #    - name: out log
+        #      run: cat tmp/selfcheck.log
