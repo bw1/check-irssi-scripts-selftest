@@ -15,7 +15,7 @@ jobs:
     - name: pwd
       run: 'echo pwd: $PWD'
     - name: installpkg
-      run: 'bash $PWD/rungetpkg.sh'
+      run: './rungetpkg.sh'
     - name: tree
       run: 'tree $PWD'
     - name: scripts
