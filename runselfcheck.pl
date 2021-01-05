@@ -20,14 +20,15 @@ my $startup= <<'END';
 ^set -clear autocreate_query_level
 ^set autoclose_windows off
 ^set reuse_unused_windows on
-^set -clear log_close_string
-^set -clear log_day_changed
-^set -clear log_open_string
-^set log_timestamp * 
 ^load perl
 ^script exec $$^W = 1
 run "$W/testhelperscript.pl"
 END
+
+# ^set -clear log_close_string
+# ^set -clear log_day_changed
+# ^set -clear log_open_string
+# ^set log_timestamp * 
 
 rmtree $wp;
 mkdir $wp;
