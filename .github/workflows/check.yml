@@ -18,6 +18,8 @@ jobs:
       run: sudo apt-get install -q irssi
     - name: scripts
       run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
+    - name: tree install
+      run: 'sudo apt-get install tree'
     - name: tree
       run: 'tree ~'
     - name: pwd
