@@ -46,7 +46,7 @@ $ENV{TERM}='vt100';
 if ( $debug > 0 ) {
 	system("irssi", "--home=$configp");
 } else {
-	`irssi --home=$configp`;
+	`irssi --home=$configp 2>stderr.log`;
 }
 chdir $wd;
 
@@ -54,3 +54,5 @@ print "-------------\n";
 system "cat", "$wp/info.yaml";
 print "-------------\n";
 system "cat", "$wp/selfcheck.log";
+print "-------------\n";
+system "cat", "$wp/stderr.log";
