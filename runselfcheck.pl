@@ -14,7 +14,7 @@ my $configp= "irssi_config";
 my $debug=0;
 
 my $startup= <<'END';
-^set settings_autosave off
+^set ignore_signals int quit term alrm usr1 usr2
 ^set use_status_window off
 ^set autocreate_windows off
 ^set -clear autocreate_query_level
@@ -26,6 +26,7 @@ save
 run "$W/testhelperscript.pl"
 END
 
+# ^set settings_autosave off
 # ^set -clear log_close_string
 # ^set -clear log_day_changed
 # ^set -clear log_open_string
