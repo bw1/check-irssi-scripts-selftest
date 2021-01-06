@@ -50,4 +50,4 @@ Irssi::signal_add("selfcheckstop", \&myquit);
 Irssi::print("Selfcheck: run self check ($info{selfcheckcmd})", MSGLEVEL_CRAP);
 Irssi::command($info{selfcheckcmd});
 
-Irssi::timeout_add_once(20000, \&myquit, 'Error: timeout');
+#Irssi::timeout_add_once(20000, \&myquit, 'Error: timeout');
