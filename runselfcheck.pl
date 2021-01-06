@@ -47,7 +47,7 @@ $ENV{TERM}='vt100';
 if ( $debug > 0 ) {
 	system("irssi", "--home=$configp");
 } else {
-	`irssi --home=$configp 2>stderr.log`;
+	`nohup irssi --home=$configp 2>stderr.log`;
 }
 chdir $wd;
 
