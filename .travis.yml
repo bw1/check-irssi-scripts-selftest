@@ -17,11 +17,12 @@ addons:
 before_install:
 - git clone -q -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
 install:
+- cpanm --quiet YAML
 - cpanm --quiet LWP::Protocol::https
 - cpanm --quiet File::Slurper
 - 'echo $PWD'
 before_script:
-- 'tree ~'
+- 'echo $PWD'
 script:
 - perl runselfcheck.pl
 after_script:
