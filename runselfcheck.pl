@@ -43,11 +43,12 @@ $t="$wp/testhelperscript.pl";
 
 chdir $wp;
 $ENV{CURRENT_SCRIPT}='chansearch';
+$ENV{USER}='action';
 $ENV{TERM}='vt100';
 if ( $debug > 0 ) {
 	system("irssi", "--home=$configp");
 } else {
-	`nohup irssi --home=$configp 2>stderr.log`;
+	`irssi --home=$configp >/dev/null 2>stderr.log`;
 }
 chdir $wd;
 
