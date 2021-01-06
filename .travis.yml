@@ -9,9 +9,8 @@ perl:
 addons:
   apt:
     packages:
-    - libfile-slurper-perl
+    - irssi
     - libyaml-perl
-    - libwp-protocol-https-perl
     - libhtml-parser-perl
     - libjson-pp-perl
 before_install:
