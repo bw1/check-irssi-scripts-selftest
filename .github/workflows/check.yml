@@ -22,6 +22,7 @@ jobs:
       run: git clone -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
     - name: check scripts
       run: perl runselfcheck.pl
+      shell: 'bash {0}'
         #    - name: tree
         #      run: 'tree $PWD'
         #    - name: out info
