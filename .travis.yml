@@ -10,12 +10,15 @@ addons:
   apt:
     packages:
     - irssi
+    - tree
     - libyaml-perl
     - libhtml-parser-perl
     - libjson-pp-perl
 before_install:
 - git clone -q -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
 install:
+- cpanm --quiet LWP::Protocol::https
+- cpanm --quiet File::Slurper
 - 'echo $PWD'
 before_script:
 - 'tree ~'
