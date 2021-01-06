@@ -21,6 +21,7 @@ my $startup= <<'END';
 ^set autoclose_windows off
 ^set reuse_unused_windows on
 ^load perl
+save
 ^script exec $$^W = 1
 run "$W/testhelperscript.pl"
 END
