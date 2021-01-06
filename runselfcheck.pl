@@ -11,7 +11,7 @@ use Cwd;
 my $wd= getcwd(); 
 my $wp= "tmp";
 my $configp= "irssi_config";
-my $debug=0;
+my $debug=1;
 
 my $startup= <<'END';
 ^set ignore_signals int quit term alrm usr1 usr2
@@ -22,6 +22,7 @@ my $startup= <<'END';
 ^set reuse_unused_windows on
 ^load perl
 save
+connect freenode
 ^script exec $$^W = 1
 run "$W/testhelperscript.pl"
 END
