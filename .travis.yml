@@ -16,7 +16,7 @@ addons:
     - libhtml-parser-perl
     - libjson-pp-perl
 before_install:
-- git clone -q -b chansearch2 https://github.com/bw1/scripts.irssi.org.git
+- git clone -q -b shorturl https://github.com/bw1/scripts.irssi.org.git
 install:
 - cpanm --quiet LWP::UserAgent
 - cpanm --quiet LWP::Protocol::https
