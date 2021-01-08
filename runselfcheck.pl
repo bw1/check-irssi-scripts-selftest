@@ -12,7 +12,7 @@ my $wd= getcwd();
 my $wp= "tmp";
 my $configp= "irssi_config";
 my $debug=0;
-my @scripts= qw/chansearch shorturl/;
+my @scripts= qw/chansearch shorturl imdb/;
 
 my $startup= <<'END';
 ^set ignore_signals int quit term alrm usr1 usr2
