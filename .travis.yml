@@ -15,6 +15,7 @@ addons:
     - libyaml-perl
     - libhtml-parser-perl
     - libjson-pp-perl
+    - xmltv
 before_install:
 - git clone -q -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
 install:
