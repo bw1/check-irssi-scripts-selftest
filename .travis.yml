@@ -1,5 +1,5 @@
-sudo: false
-dist: trusty
+sudo: true
+dist: bionic
 language: perl
 cache:
   directories:
@@ -15,7 +15,6 @@ addons:
     - libyaml-perl
     - libhtml-parser-perl
     - libjson-pp-perl
-    - xmltv
 before_install:
 - git clone -q -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
 install:
@@ -26,6 +25,7 @@ install:
 - 'echo $PWD'
 before_script:
 - 'echo $PWD'
+- bash -e init_ontv.sh
   #- 'tree ~'
 script:
 - perl runselfcheck.pl
