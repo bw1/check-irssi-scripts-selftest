@@ -1,0 +1,23 @@
+digraph cycle {
+	travis [shape=note,label=".travis.yml"];
+	rsc [shape=parallelogram,label="runselfcheck.pl"];
+	irssi [shape=parallelogram,label="irssi"];
+	log [shape=note,label="../tmp/foo/selfcheck.log"];
+	helper [shape=parallelogram,label="selfcheckhelperscript.pl"];
+	foo [shape=parallelogram,label="foo.pl"];
+	scripts [shape=note,label="scripts.yaml"];
+	exit [shape=hexagon,label="exit(  )"]
+	info [shape=note,label="../tmp/foo/info.yaml"];
+	subgraph test {
+		rsc -> scripts [dir=back];
+		rsc -> irssi [weight=5,minlen=2]; 
+		irssi -> helper [weight=5,minlen=2];
+		helper -> foo [weight=5];
+	}
+	foo -> helper-> info -> rsc [color=red];
+	rsc -> exit [color=red,minlen=5];
+	irssi -> log [color=red];
+	{rank=same; info helper  }
+	travis -> rsc [minlen=5];
+	{rank=same; rsc travis exit }
+}

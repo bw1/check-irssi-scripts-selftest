@@ -12,7 +12,9 @@ my $wd= getcwd();
 my $wp= "tmp";
 my $configp= "irssi_config";
 my $debug=0;
-my @scripts= qw/chansearch shorturl imdb ontv2/;
+my @scripts;
+push @scripts, qw/chansearch shorturl imdb ontv2/;
+push @scripts, qw/0x0st/;
 
 my $startup= <<'END';
 ^set ignore_signals int quit term alrm usr1 usr2
@@ -47,7 +49,7 @@ foreach my $scr ( @scripts ) {
 	`ln -s $wd/selfcheckhelperscript.pl $t`; #!!
 
 	chdir $wp;
-	$ENV{CURRENT_SCRIPT}='chansearch';
+	$ENV{CURRENT_SCRIPT}=$scr;
 	$ENV{USER}='action';
 	$ENV{TERM}='vt100';
 	if ( $debug > 0 ) {
