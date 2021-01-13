@@ -34,6 +34,9 @@ END
 # ^set -clear log_day_changed
 # ^set -clear log_open_string
 # ^set log_timestamp * 
+print "perl_version: $^V\n";
+#print "perl_inc:\n".join("\n", @INC)."\n";
+
 
 my $result=0;
 foreach my $scr ( @scripts ) {

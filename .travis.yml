@@ -1,31 +1,39 @@
 sudo: true
-dist: bionic
-language: perl
-cache:
-  directories:
-  - extlib
-perl:
-- "5.30"
+#dist: bionic
+dist: Focal
+#language: perl
+language: Generic
+#cache:
+#  directories:
+#  - extlib
+#perl:
+#- "5.26"
 addons:
   apt:
     packages:
     - irssi
     - tree
+    - cpanminus
     - libwww-perl
     - libyaml-perl
+    - libyaml-libyaml-perl
     - libhtml-parser-perl
     - libjson-pp-perl
+    - libxml-libxml-perl
+    - libxml-simple-perl
 before_install:
-- git clone -q -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
+  #- sudo cpanm --quiet LWP::UserAgent
+  #- sudo cpanm --quiet LWP::Protocol::https
+- sudo cpanm --quiet File::Slurper
+- sudo cpanm --quiet YAML
+- sudo cpanm --quiet XML::LibXML::Simple
+  #- sudo cpanm --quiet YAML::XS
 install:
-- cpanm --quiet LWP::UserAgent
-- cpanm --quiet LWP::Protocol::https
-- cpanm --quiet File::Slurper
-- cpanm --quiet YAML
+- git clone -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
 - 'echo $PWD'
 before_script:
 - 'echo $PWD'
-- bash -e init_ontv.sh
+- bash -ev init_ontv.sh
   #- 'tree ~'
 script:
 - perl runselfcheck.pl
