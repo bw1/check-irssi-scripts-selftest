@@ -12,9 +12,11 @@ sudo cpanm --quiet XML::Writer
 sudo cpanm --quiet Date::Manip
 sudo cpanm --quiet DateTime
 sudo cpanm --quiet File::Slurp
-
 # graper
 #sudo cpanm --quiet 
+# script
+sudo cpanm --quiet DateTime::Format::Strptime
+
 #sudo apt-get --quiet install xmltv >/dev/null
 git clone https://github.com/XMLTV/xmltv.git
 cd xmltv
