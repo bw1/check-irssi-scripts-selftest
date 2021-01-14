@@ -1,6 +1,6 @@
 sudo: true
-#dist: bionic
-dist: Focal
+dist: bionic
+#dist: Focal
 #language: perl
 language: Generic
 #cache:
