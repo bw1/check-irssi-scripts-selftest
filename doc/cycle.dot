@@ -5,11 +5,11 @@ digraph cycle {
 	log [shape=note,label="../tmp/foo/selfcheck.log"];
 	helper [shape=parallelogram,label="selfcheckhelperscript.pl"];
 	foo [shape=parallelogram,label="foo.pl"];
-	scripts [shape=note,label="scripts.yaml"];
+	scripts [shape=note,label="scripts.yaml",style=dotted];
 	exit [shape=hexagon,label="exit(  )"]
 	info [shape=note,label="../tmp/foo/info.yaml"];
 	subgraph test {
-		rsc -> scripts [dir=back];
+		rsc -> scripts [dir=back,style=dotted];
 		rsc -> irssi [weight=5,minlen=2]; 
 		irssi -> helper [weight=5,minlen=2];
 		helper -> foo [weight=5];
