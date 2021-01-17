@@ -7,8 +7,10 @@ use YAML qw/Dump DumpFile LoadFile/;
 use File::Slurper qw/read_text/;
 use Perl::PrereqScanner;
 use CPAN::Meta::Requirements;
+use Module::Info;
 use Module::CoreList;
 
+my $debug=0;
 my $p= "scripts.irssi.org/scripts";
 my %smod;
 
@@ -54,10 +56,18 @@ my $scrf = (
 
 DumpFile('myscripts.yaml', $scrf);
 
-#print join( "\n", keys %smod),"\n";
-
-foreach my $pa ( keys %smod ) {
-	system('sudo cpanm --quiet '.$pa);
+if ( $debug ) {
+	foreach my $mo ( keys %smod ) {
+		print $mo,"\t";
+		my $minfo = Module::Info->new_from_module($mo);
+		print "ok" if (defined $minfo);
+		print "\n";
+	}
+} else {
+	foreach my $pa ( keys %smod ) {
+		my $minfo = Module::Info->new_from_module($mo);
+		system('sudo cpanm --quiet '.$pa) unless $minfo;
+	}
 }
 
 
