@@ -13,8 +13,8 @@ my $wp= "tmp";
 my $configp= "irssi_config";
 my $debug=0;
 my @scripts;
-push @scripts, qw/chansearch shorturl imdb ontv2/;
-push @scripts, qw/0x0st/;
+my $scrf= LoadFile('myscripts.yaml');
+@scripts = @{ $scrf->{selfcheck} };
 
 my $startup= <<'END';
 ^set ignore_signals int quit term alrm usr1 usr2

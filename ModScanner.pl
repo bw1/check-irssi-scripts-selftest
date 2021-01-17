@@ -13,6 +13,9 @@ use Module::CoreList;
 my $debug=0;
 my $p= "scripts.irssi.org/scripts";
 my %smod;
+my $scrf;
+
+$scrf->{selfcheck}=[];
 
 sub modscanner {
 	my ( $filename ) = @_;
@@ -47,12 +50,11 @@ foreach my $fn ( @dl ) {
 		$scr{$sn}->{selfcheck}= 1;
 		$scr{$sn}->{moduls}= 
 			[modscanner("$p/$fn")];
+		push @{$scrf->{selfcheck}}, $sn;
 	}
 }
 
-my $scrf = (
-	'scripts' => { %scr},
-);
+$scrf->{'scripts'} = { %scr};
 
 DumpFile('myscripts.yaml', $scrf);
 
