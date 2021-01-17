@@ -65,7 +65,7 @@ if ( $debug ) {
 	}
 } else {
 	foreach my $pa ( keys %smod ) {
-		my $minfo = Module::Info->new_from_module($mo);
+		my $minfo = Module::Info->new_from_module($pa);
 		system('sudo cpanm --quiet '.$pa) unless $minfo;
 	}
 }
