@@ -40,13 +40,12 @@ install:
 - perl ModScanner.pl
 - 'echo $PWD'
 before_script:
-- 'echo $PWD'
 - bash -ev init_ontv.sh
   #- 'tree ~'
 script:
+- 'echo "\033[0;35m Run Tests \033[0m"'
 - perl runselfcheck.pl
 after_script:
-- 'echo $PWD'
 branches:
   only:
   - master
