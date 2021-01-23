@@ -25,6 +25,7 @@ addons:
     - libtest-fatal-perl
     - libfile-slurper-perl
     - libmodule-info-perl
+    - perl-DateTime-Format-Strptime
 before_install:
   #- sudo cpanm --quiet LWP::UserAgent
   #- sudo cpanm --quiet LWP::Protocol::https
