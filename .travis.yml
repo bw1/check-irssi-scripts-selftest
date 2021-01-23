@@ -22,11 +22,13 @@ addons:
     - libxml-libxml-perl
     - libxml-simple-perl
     - libperl-prereqscanner-perl
+    - libtest-fatal-perl
+    - libfile-slurper-perl
 before_install:
   #- sudo cpanm --quiet LWP::UserAgent
   #- sudo cpanm --quiet LWP::Protocol::https
 - sudo cpanm --quiet YAML
-- sudo cpanm --quiet File::Slurper
+  #- sudo cpanm --quiet File::Slurper
   #- sudo cpanm --quiet Perl::PrereqScanner
 - sudo cpanm --quiet Module::Info
   #- sudo cpanm --quiet XML::LibXML::Simple
