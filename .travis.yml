@@ -43,7 +43,6 @@ before_script:
 - bash -ev init_ontv.sh
   #- 'tree ~'
 script:
-- 'echo "\033[0;35m Run Tests \033[0m"'
 - perl runselfcheck.pl
 after_script:
 branches:
