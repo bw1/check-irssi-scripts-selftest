@@ -34,8 +34,9 @@ END
 # ^set -clear log_day_changed
 # ^set -clear log_open_string
 # ^set log_timestamp * 
-print "\033[0;35m Run Tests: \033[0m";
+print `irssi --version`;
 print "perl_version: $^V\n";
+print "\033[0;35m Run Tests: \033[0m\n";
 #print "perl_inc:\n".join("\n", @INC)."\n";
 
 
