@@ -41,6 +41,7 @@ install:
 - 'echo $PWD'
 before_script:
 - bash -ev init_ontv.sh
+- bash -ev init_google.sh
   #- 'tree ~'
 script:
 - perl runselfcheck.pl
