@@ -5,7 +5,7 @@
 # main
 #mkdir ~/bin
 git clone https://github.com/jarun/googler.git
-$d=$PWD
+gd=$PWD
 cd ~/bin
-ln -s $PWD/googler/googler
+ln -s $gd/googler/googler
 #PATH=$PATH:~/bin
