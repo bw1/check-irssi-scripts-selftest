@@ -42,7 +42,7 @@ print "\033[0;35m Run Tests: \033[0m\n";
 
 my $result=0;
 foreach my $scr ( @scripts ) {
-	print "\033[0;96m selfcheck $scr \033[0m\n";
+	print "\033[0;36m selfcheck $scr \033[0m";
 	my $wp="tmp/$scr";
 	rmtree $wp;
 	make_path "$wp/$configp/";
