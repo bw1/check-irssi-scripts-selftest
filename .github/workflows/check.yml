@@ -20,7 +20,7 @@ jobs:
       run: 'tree $PWD'
     - run: 'whoami ; echo user: $USER'
     - name: scripts
-      run: git clone -b shorturl https://github.com/bw1/scripts.irssi.org.git
+      run: git clone -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
     - name: check scripts
       run: perl runselfcheck.pl
       shell: 'bash {0}'
