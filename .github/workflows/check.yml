@@ -1,32 +1,29 @@
 name: check
 
 on: 
-  #push:
-  #schedule:
-  #   - cron: '0 12 * * 0'
+  push:
+  schedule:
+   - cron: '0 12 * * 0'
 
 jobs:
   build:
 
     runs-on: ubuntu-20.04
+    #runs-on: ubuntu-22.04
     
     steps:
     - uses: actions/checkout@master
-    - name: pwd
-      run: 'echo pwd: $PWD'
     - name: installpkg
-      run: './rungetpkg.sh'
-    - name: tree
-      run: 'tree $PWD'
-    - run: 'whoami ; echo user: $USER'
+      run: ./rungetpkg.sh
     - name: scripts
       run: git clone -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
+    - name: module
+      run: ./ModScanner.pl
+    - name: init_google
+      run: ./init_google.sh
+    - name: test_google
+      run: ./test_google.sh
+    - name: init_ontv
+      run: ./init_ontv.sh
     - name: check scripts
       run: perl runselfcheck.pl
-      shell: 'bash {0}'
-        #    - name: tree
-        #      run: 'tree $PWD'
-        #    - name: out info
-        #      run: cat tmp/info.yaml
-        #    - name: out log
-        #      run: cat tmp/selfcheck.log

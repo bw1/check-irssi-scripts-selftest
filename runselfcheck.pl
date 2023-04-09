@@ -17,12 +17,15 @@ my $scrf= LoadFile('myscripts.yaml');
 @scripts = @{ $scrf->{selfcheck} };
 
 my $startup= <<'END';
-^set ignore_signals int quit term alrm usr1 usr2
+log open selfcheck.log all
 ^set use_status_window off
 ^set autocreate_windows off
 ^set -clear autocreate_query_level
 ^set autoclose_windows off
 ^set reuse_unused_windows on
+^set timestamp_format %H:%M:%S
+^set log_timestamp %H:%M:%S
+^set autolog_level all
 ^load perl
 save
 ^script exec $$^W = 1
@@ -42,7 +45,7 @@ print "\033[0;35m Run Tests: \033[0m\n";
 
 my $result=0;
 foreach my $scr ( @scripts ) {
-	print "\033[0;36m selfcheck $scr \033[0m";
+	print "\033[0;36m $scr \033[0m";
 	my $wp="tmp/$scr";
 	rmtree $wp;
 	make_path "$wp/$configp/";
@@ -60,10 +63,21 @@ foreach my $scr ( @scripts ) {
 	if ( $debug > 0 ) {
 		system("irssi", "--home=$configp");
 	} else {
-		`irssi --home=$configp 2>stderr.log`;
+		`screen -S test-scripts -d -m irssi --home=$configp`;
 	}
 	chdir $wd;
+}
+print "\n\nWait ...\n\n";
 
+for( my $c=60; $c>=0; $c-= 5 ) {
+	sleep 5;
+	my $r =`screen -S test-scripts -ls`;
+	last if ( $r=~ m/No Sockets found/);
+}
+
+foreach my $scr ( @scripts ) {
+	print "\033[0;36m selfcheck $scr \033[0m";
+	my $wp="tmp/$scr";
 
 	my ($info, $ires);
 	if ( -e "$wp/info.yaml" ) {
@@ -76,12 +90,10 @@ foreach my $scr ( @scripts ) {
 	} 
 
 	print " $ires\n";
-	print "-------------\n";
+	print "----info------------------\n";
 	system "cat", "$wp/info.yaml";
-	print "-------------\n";
+	print "----selfcheck-------------\n";
 	system "cat", "$wp/selfcheck.log";
-	print "-------------\n";
-	system "cat", "$wp/stderr.log";
 	$result=-1;
 }
 

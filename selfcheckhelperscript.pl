@@ -33,8 +33,6 @@ sub cmd {
 
 Irssi::command_bind($IRSSI{name},\&cmd);
 
-Irssi::print("Selfcheck: startlog", MSGLEVEL_CRAP);
-Irssi::command('^window log on selfcheck.log');
 Irssi::print("Selfcheck: perl_version: $^V", MSGLEVEL_CRAP);
 #Irssi::print("Selfcheck: perl_inc:", MSGLEVEL_CRAP);
 #foreach my $l ( @INC ) {
