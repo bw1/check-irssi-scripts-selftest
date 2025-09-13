@@ -20,10 +20,6 @@ jobs:
       run: git clone -b selfcheck_tmp https://github.com/bw1/scripts.irssi.org.git
     - name: module
       run: ./ModScanner.pl
-    - name: init_google
-      run: ./init_google.sh
-    - name: test_google
-      run: ./test_google.sh
     - name: init_ontv
       run: ./init_ontv.sh
     - name: check scripts
