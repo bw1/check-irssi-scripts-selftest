@@ -2,6 +2,7 @@
 #
 #  get packages
 #
+sudo apt-get --quiet update
 sudo apt-get --quiet install cpanminus > /dev/null
 sudo apt-get --quiet install irssi > /dev/null
 sudo apt-get --quiet install screen > /dev/null
