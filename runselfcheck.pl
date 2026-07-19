@@ -75,14 +75,25 @@ for( my $c=60; $c>=0; $c-= 5 ) {
 	last if ( $r=~ m/No Sockets found/);
 }
 
+my $mdres='';
 foreach my $scr ( @scripts ) {
 	print "\033[0;36m selfcheck $scr \033[0m";
 	my $wp="tmp/$scr";
+	if ( $mdres ne '' ) {
+		if ( $mdres !~ m/:$/ ) {
+			$mdres .= ':x:';
+		}
+		$mdres .= "\n";
+	}
+	$mdres .= sprintf "* %-20s ", $scr;
 
 	my ($info, $ires);
 	if ( -e "$wp/info.yaml" ) {
 		$info= LoadFile("$wp/info.yaml");
 		$ires= $info->{selfcheckresult};
+		if ( $ires eq 'ok' ) {
+			$mdres .= 'ok :heavy_check_mark:';
+		}
 		if ( $ires eq 'ok' ) {
 			print " $ires\n";
 			next;
@@ -96,5 +107,9 @@ foreach my $scr ( @scripts ) {
 	system "cat", "$wp/selfcheck.log";
 	$result=-1;
 }
+
+open my $fa, ">>", $ENV{GITHUB_STEP_SUMMARY};
+print $fa $mdres;
+close $fa;
 
 exit($result);
